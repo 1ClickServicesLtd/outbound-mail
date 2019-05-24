@@ -8,7 +8,7 @@
 # 	FILE:			setup.sh																		#
 #	DESCRIPTION:	Host Automated Setup Script														#
 #																									#
-#	VERSION:		0.1																				#
+#	VERSION:		0.11																			#
 #	AUTHOR:			Daniel McGiff <daniel.mcgiff@1clickcloud.net>									#
 #	DATE:			23rd May 2019																	#
 #	UPDATED:		24th May 2019																	#
@@ -51,9 +51,14 @@ sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/
 apt-get update
 apt-get install php7.3 apache2 php7.3-mysqli php7.3-gd php7.3-mbstring php7.3-curl php7.3-ldap php7.3-xml libgcrypt11-dev zlib1g-dev dnsutils
 
+#clone MailWatch repo
+mkdir /opt/mailwatch
+cd /opt/mailwatch
+git clone --depth=1 https://github.com/mailwatch/MailWatch.git --branch 1.2 --single-branch .
+
 #Copy MailWatchConf into place
 
-cp /opt/MailWatchConf.pm /usr/share/MailScanner/perl/custom/
+cp /opt/outbound-mail/MailWatchConf.pm /usr/share/MailScanner/perl/custom/
 
 #Add SymLinks for other MailScanner scripts
 
