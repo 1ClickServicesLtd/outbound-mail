@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+
+##################################################
+#
+# Title: DKIM tables generator
+# Author: Tom Black
+# Created: 2017-12-01
+# Updated: 2017-12-01
+#
+##################################################
+
+# Dependencies
+import sys, os, pwd, grp
+
+##################################################
+# Location variables
+##################################################
+
+# DKIM record prefix
+dkimPrefix = 'default'
+
+# Base path for private keys
+keyPath = '/var/dkim/private/'
+
+# Format: default._domainkey.$domain $domain:mail:$location
+# keyTable = '/etc/opendkim/KeyTable'
+keyTablePath = '/var/dkim/KeyTable'
+
+# Format: *@$domain default._domainkey.$domain
+# signingTable = '/etc/opendkim/SigningTable'
+signingTablePath = '/var/dkim/SigningTable'
+
+# Desired owner/group of private key files
+dkimOwner = 'dkimsync'
+dkimGroup = 'dkimsync'
+
+##################################################
+# Utility functions
+##################################################
+
+# Chown/chgrp all files in directory and return list of files
+def scanDir(rootDir,owner,group):
+    owner = pwd.getpwnam(owner).pw_uid
+    group = grp.getgrnam(group).gr_gid
+    outputFiles = []
+    for currentDir, dirList, fileList in os.walk(rootDir):
+        for fileName in fileList:
+            currentFile = os.path.join(currentDir, fileName)
+            os.chown(currentFile,owner,group)
+            outputFiles.append(currentFile)
+        for dirName in dirList:
+            os.chown(os.path.join(currentDir, dirName),owner,group)
+    return outputFiles
+
+# Generate keyTable from list of key paths
+def keyTable(pathList):
+    outputList = []
+    for key in pathList:
+        domain = os.path.basename(key)
+        keyTableEntry = dkimPrefix+'._domainkey.'+domain+' '+domain+':'+dkimPrefix+':'+key
+        outputList.append(keyTableEntry)
+    return outputList
+
+# Generate signingTable from list of key paths
+def signingTable(pathList):
+    outputList = []
+    for key in pathList:
+        domain = os.path.basename(key)
+        signingTableEntry = '*@'+domain+' '+dkimPrefix+'._domainkey.'+domain
+        outputList.append(signingTableEntry)
+    return outputList
+
+# Overwrite a file with the contents of list
+def writeList(list,file):
+    f = open(file, 'w')
+    for entry in list:
+        f.write(entry+'\n')
+    f.close()
+
+# Run script if not used as library
+if __name__ == '__main__':
+    outputList = scanDir(keyPath,dkimOwner,dkimGroup)
+    writeList(keyTable(outputList),keyTablePath)
+    writeList(signingTable(outputList),signingTablePath)
+
