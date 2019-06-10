@@ -8,7 +8,7 @@
 # 	FILE:			setup.sh																		#
 #	DESCRIPTION:	Host Automated Setup Script														#
 #																									#
-#	VERSION:		0.11																			#
+#	VERSION:		0.1.1																			#
 #	AUTHOR:			Daniel McGiff <daniel.mcgiff@1clickcloud.net>									#
 #	DATE:			23rd May 2019																	#
 #	UPDATED:		24th May 2019																	#
@@ -118,3 +118,6 @@ cp tools/Postfix_relay/mailwatch_postfix_relay.php /usr/local/bin
 cp tools/Postfix_relay/mailwatch_mailscanner_relay.php /usr/local/bin
 chmod +x /usr/local/bin/mailwatch_postfix_relay.php
 chmod +x /usr/local/bin/mailwatch_mailscanner_relay.php
+
+#enable mod_rewrite
+a2enmod rewrite
