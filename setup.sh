@@ -11,7 +11,7 @@
 #	VERSION:		0.1.1																			#
 #	AUTHOR:			Daniel McGiff <daniel.mcgiff@1clickcloud.net>									#
 #	DATE:			23rd May 2019																	#
-#	UPDATED:		24th May 2019																	#
+#	UPDATED:		10th June 2019																	#
 #																									#
 #####################################################################################################
 
@@ -103,9 +103,11 @@ cp /opt/outbound-mail/TrustedHosts /var/dkim/TrustedHosts
 
 #copy postfix config into place
 cp /opt/outbound-mail/main.cf /etc/postfix/main.cf
+cp /opt/outbound-mail/header_checks /etc/postfix/header_checks
 
 #set permissions on mail queues
 chown postfix:mtagroup /var/spool/MailScanner/incoming
+chown postfix:mtagroup /var/spool/MailScanner/ramdisk_store
 chown postfix:postfix /var/spool/postfix/hold
 chown postfix:postfix /var/spool/postfix/incoming
 chmod 777 /var/spool/postfix/hold
