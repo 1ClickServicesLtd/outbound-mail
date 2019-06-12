@@ -59,7 +59,7 @@ define('SESSION_TIMEOUT', 600);
 define('DB_TYPE', 'mysql');
 define('DB_USER', 'mailwatch');
 define('DB_PASS', 'K4hxdtYTiGHgtC4K6A');
-define('DB_HOST', 'outbound-mail-sql-1.simpledns.xyz');
+define('DB_HOST', 'outbound-mail-db.as200552.net');
 define('DB_NAME', 'mailscanner');
 define('DB_DSN', DB_TYPE . '://' . DB_USER . ':' . DB_PASS . '@' . DB_HOST . '/' . DB_NAME);
 

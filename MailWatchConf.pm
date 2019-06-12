@@ -9,7 +9,7 @@ use strict;
 
 # Change the values below to match the MailWatch database settings as set in conf.php
 my ($db_name) = 'mailscanner';
-my ($db_host) = 'outbound-mail-sql-1.simpledns.xyz';
+my ($db_host) = 'outbound-mail-db.as200552.net';
 my ($db_user) = 'mailwatch';
 my ($db_pass) = 'K4hxdtYTiGHgtC4K6A';
 

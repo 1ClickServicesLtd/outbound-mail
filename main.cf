@@ -13,7 +13,9 @@ alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 mydestination = $myhostname, localhost.$mydomain, localhost
 relayhost = 
-mynetworks = 127.0.0.0/8
+myhostname = outbound-filtered-XXX.as200552.net
+mynetworks = 127.0.0.0/8 185.103.116.0/24 185.103.117.0/24 185.103.118.0/24 185.103.119.0/24 178.62.4.90/32 13.94.253.21/32 104.45.87.86/32 185.103.119.71 185.103.119.72 185.103.119.73 185.103.119.74
+
 inet_interfaces = loopback-only
 recipient_delimiter = +
 header_checks = regexp:/etc/postfix/header_checks
