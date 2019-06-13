@@ -21,4 +21,4 @@
 
 #rysnc recursive and deleting files that no longer exist. LOCAL_PATH REMOTE_USER@REMOTE_SERVER:REMOTE_PATH
 #$HOSTNAME variable representing local hostname.
-rsync --recursive --delete dkimsync@outbound-mailwatch-new.as200552.net:/var/dkim/private/ /var/dkim/private/
+rsync --recursive --delete dkimsync@outbound-mail-new.as200552.net:/var/dkim/private/ /var/dkim/private/
