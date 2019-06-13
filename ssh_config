@@ -1,0 +1,4 @@
+Host dkimsync outbound-mail-new.as200552.net
+    HostName outbound-mail-new.as200552.net
+    IdentityFile ~/.ssh/dkimsync.as200552.net
+    User dkimsync
