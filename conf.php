@@ -112,7 +112,7 @@ define('MS_SHARE_DIR', '/usr/share/MailScanner/'); // Path for ConfigDefs.pl fil
 define('MS_LIB_DIR', '/usr/lib/MailScanner/'); // Path for sophos-wrapper file
 define('MS_EXECUTABLE_PATH', '/usr/sbin/MailScanner');
 define('IMAGES_DIR', '/images/'); // Both leading and trailing slash needed
-define('SA_DIR', '/usr/bin/');
+define('SA_DIR', '/usr/local/bin/');
 define('SA_RULES_DIR', '/usr/share/spamassassin/');
 define('SA_PREFS', MS_CONFIG_DIR . 'spamassassin.conf'); // spam.assassin.prefs.conf in V4, spamassassin.conf in V5
 define('TEMP_DIR', '/tmp/');
