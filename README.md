@@ -2,7 +2,7 @@
 
 ### Scanning Host Setup Instructions
 
-######V1.0 17th June 2019
+###### V1.0 17th June 2019
 
 ---
 
