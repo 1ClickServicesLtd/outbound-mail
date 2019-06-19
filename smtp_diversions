@@ -1,1 +1,1 @@
-.outlook.com FILTER smtp:[185.103.119.200]
+/^.+outlook.com/i FILTER smtp:[185.103.119.200]
