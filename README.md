@@ -2,7 +2,7 @@
 
 ### Scanning Host Setup Instructions
 
-###### V1.0 17th June 2019
+###### V1.0.1 10th December 2019
 
 ---
 
@@ -77,6 +77,7 @@
 
     ``` 
     0 */2 * * * service opendkim reload
+    */5 * * * * /opt/outbound-mail/dkimsync-lb-to-mailwatch.sh >/dev/null 2>&1
     */5 * * * * /var/dkim/gen_dkim_tables > /dev/null 2>&1
     ```
 
