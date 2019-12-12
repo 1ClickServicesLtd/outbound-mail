@@ -8,10 +8,10 @@
 # 	FILE:			setup.sh																		#
 #	DESCRIPTION:	Host Automated Setup Script														#
 #																									#
-#	VERSION:		0.1.1																			#
+#	VERSION:		0.1.3																			#
 #	AUTHOR:			Daniel McGiff <daniel.mcgiff@1clickcloud.net>									#
 #	DATE:			23rd May 2019																	#
-#	UPDATED:		10th June 2019																	#
+#	UPDATED:		12th December 2019																#
 #																									#
 #####################################################################################################
 
@@ -49,7 +49,7 @@ sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/
 
 #install Apache, PHP and Dependencies
 apt-get update
-apt-get install php7.3 apache2 php7.3-mysqli php7.3-gd php7.3-mbstring php7.3-curl php7.3-ldap php7.3-xml libgcrypt11-dev zlib1g-dev dnsutils
+apt-get install php7.3 apache2 php7.3-mysqli php7.3-gd php7.3-mbstring php7.3-curl php7.3-ldap php7.3-xml libgcrypt20-dev zlib1g-dev dnsutils
 
 #clone MailWatch repo
 mkdir /opt/mailwatch
@@ -73,9 +73,6 @@ cpanm Encoding::FixLatin
 
 #copy conf.php into place
 cp /opt/outbound-mail/conf.php /opt/mailwatch/mailscanner/
-
-#run upgrade.php
-php /opt/mailwatch/upgrade.php
 
 #copy apache configuration into place
 cp /opt/outbound-mail/apache.conf /etc/apache2/sites-enabled/000-default.conf
@@ -103,6 +100,7 @@ cp /opt/outbound-mail/TrustedHosts /var/dkim/TrustedHosts
 
 #copy postfix config into place
 cp /opt/outbound-mail/main.cf /etc/postfix/main.cf
+cp /opt/outbound-mail/master.cf /etc/postfix/master.cf
 cp /opt/outbound-mail/header_checks /etc/postfix/header_checks
 
 #set permissions on mail queues
