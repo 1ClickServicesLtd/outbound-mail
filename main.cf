@@ -9,6 +9,9 @@ append_dot_mydomain = no
 # Uncomment the next line to generate "delayed mail" warnings
 #delay_warning_time = 4h
 
+# Enabling Outbound Sending in TLS Format
+smtp_tls_security_level = may
+
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 mydestination = $myhostname, localhost.$mydomain, localhost
