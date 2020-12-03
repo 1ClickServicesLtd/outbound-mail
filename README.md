@@ -69,18 +69,23 @@
     root soft nofile 65535
     ```
 
-16. Switch to dkimsync user
+16. Add the following to crontab:
+
+    ``` 
+    0 */2 * * * /usr/sbin/service opendkim reload
+    ```
+
+17. Switch to dkimsync user
 
     * `su dkimsync`
 
-17. Add the following to crontab:
+18. Add the following to crontab:
 
     ``` 
-    0 */2 * * * service opendkim reload
     */5 * * * * /opt/outbound-mail/dkimsync-lb-to-mailwatch.sh >/dev/null 2>&1
     */5 * * * * /var/dkim/gen_dkim_tables > /dev/null 2>&1
     ```
 
-18. Switch back to root and reboot host prior to testing.
+19. Switch back to root and reboot host prior to testing.
     * `exit`
     * `reboot`
